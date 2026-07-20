@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://specify-mcp.local/schemas/specify.schema.json",
+  "title": "Specify MCP Configuration",
+  "type": "object",
+  "required": ["specify"],
+  "additionalProperties": false,
+  "properties": {
+    "specify": {
+      "type": "object",
+      "required": ["version", "mode"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "type": "integer", "const": 1 },
+        "mode": { "type": "string", "enum": ["local", "github", "linear"] }
+      }
+    },
+    "providers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "local": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "spec_root": { "type": "string", "minLength": 1 }
+          }
+        },
+        "github": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "repo": { "type": "string", "minLength": 1 },
+            "adapter": { "type": "string", "enum": ["auto", "graphql", "mcp"] },
+            "adapter_preference": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["graphql", "mcp"] },
+              "minItems": 1
+            },
+            "issue_labels": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "dry_run": { "type": "boolean" },
+            "issue_sync": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "topology": {
+                  "type": "string",
+                  "enum": ["parent-only", "hybrid", "all-children"]
+                },
+                "split_signals": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "close_orphaned_children": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        "linear": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "team_key": { "type": "string" },
+            "project_id": { "type": "string" },
+            "default_priority": { "type": "integer", "minimum": 0, "maximum": 4 }
+          }
+        }
+      }
+    }
+  }
+}

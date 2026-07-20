@@ -1,0 +1,14 @@
+[specify]
+version = 1
+mode = "github"
+
+[providers.github]
+enabled = true
+repo = "owner/repo"
+adapter = "auto"
+adapter_preference = ["graphql", "mcp"]
+issue_labels = ["spec", "task", "speckit"]
+dry_run = false
+
+[providers.linear]
+enabled = false

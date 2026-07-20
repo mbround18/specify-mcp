@@ -1,0 +1,23 @@
+{
+  "feature": "003-graph-driven-code-health",
+  "current_stage": "S0",
+  "stages": {
+    "S0": {
+      "status": "in_progress",
+      "updated_at": "1784586107",
+      "blockers": []
+    },
+    "S3": {
+      "status": "in_progress",
+      "updated_at": "1783910123",
+      "blockers": []
+    },
+    "S5": {
+      "status": "in_progress",
+      "updated_at": "1783906842",
+      "blockers": []
+    }
+  },
+  "next_best_step": "Run setup and resolve workspace prerequisites",
+  "blockers": []
+}

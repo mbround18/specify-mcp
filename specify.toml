@@ -1,0 +1,40 @@
+[providers.github]
+adapter = "auto"
+adapter_preference = [
+    "graphql",
+    "mcp",
+]
+dry_run = false
+enabled = false
+issue_labels = [
+    "spec",
+    "task",
+]
+repo = "mbround18/specify-mcp"
+
+[providers.github.issue_sync]
+close_orphaned_children = true
+split_signals = [
+    "[split]",
+    "#split",
+    "[blocked]",
+    "[risk:high]",
+    "[risk:critical]",
+    "[size:l]",
+    "[size:xl]",
+]
+topology = "hybrid"
+
+[providers.linear]
+default_priority = 2
+enabled = false
+project_id = ""
+team_key = ""
+
+[providers.local]
+enabled = true
+spec_root = "specs"
+
+[specify]
+mode = "local"
+version = 1

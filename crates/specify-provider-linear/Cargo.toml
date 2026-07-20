@@ -1,0 +1,10 @@
+[package]
+name = "specify-provider-linear"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+specify-provider-core = { path = "../specify-provider-core" }
+
+[lints]
+workspace = true
